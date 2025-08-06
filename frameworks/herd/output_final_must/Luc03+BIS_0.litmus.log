@@ -1,0 +1,343 @@
+addr
+"x"
+flag
+"x1"
+loadval
+"0"
+addr
+"y"
+flag
+"x1"
+loadval
+"0"
+(litmus-test
+ "Luc03+BIS"
+ (Program
+  (list
+   (Thread
+    0
+    (list
+     (Read 0 0 0 '() '() '() 'x 0 'AQRL)
+     (Write 1 0 0 '() '() '() 'x 2 'AQRL)
+     (Write 2 1 0 '() '() '() 'y 1 'P)))
+   (Thread
+    1
+    (list
+     (Read 3 0 1 '() '() '() 'y 0 'AQRL)
+     (Write 4 0 1 '() '() '() 'y 2 'AQRL)
+     (Write 5 1 1 '() '() '() 'x 1 'P)))))
+ '((y 1) (x 1))
+ '())
+canonicalize
+(Program
+ (list
+  (Thread
+   0
+   (list
+    (Read 0 0 0 '() '() '() 0 0 'AQRL)
+    (Write 1 0 0 '() '() '() 0 1 'AQRL)
+    (Write 2 1 0 '() '() '() 1 2 'P)))
+  (Thread
+   1
+   (list
+    (Read 3 0 1 '() '() '() 1 0 'AQRL)
+    (Write 4 0 1 '() '() '() 1 1 'AQRL)
+    (Write 5 1 1 '() '() '() 0 2 'P)))))
+bProc
+(bound
+ (relation 2 "proc")
+ '((|0| |0|) (|1| |0|) (|2| |0|) (|3| |1|) (|4| |1|) (|5| |1|))
+ '((|0| |0|) (|1| |0|) (|2| |0|) (|3| |1|) (|4| |1|) (|5| |1|)))
+bLoc
+(bound
+ (relation 2 "loc")
+ '((|0| |0|) (|1| |0|) (|2| |1|) (|3| |1|) (|4| |1|) (|5| |0|))
+ '((|0| |0|) (|1| |0|) (|2| |1|) (|3| |1|) (|4| |1|) (|5| |0|)))
+bData
+(bound
+ (relation 2 "data")
+ '((|0| |0|) (|1| |1|) (|2| |2|) (|3| |0|) (|4| |1|) (|5| |2|))
+ '((|0| |0|) (|1| |1|) (|2| |2|) (|3| |0|) (|4| |1|) (|5| |2|)))
+bPO
+(bound
+ (relation 2 "po")
+ '((|0| |2|) (|1| |2|) (|3| |5|) (|4| |5|))
+ '((|0| |2|) (|1| |2|) (|3| |5|) (|4| |5|)))
+bPOLoc
+(bound (relation 2 "po-loc") '() '())
+bAddrDP
+(bound (relation 2 "addrdeps") '() '())
+bfinalValueNotZero
+(bound
+ (relation 2 "finalValueNotZero")
+ '((|1| |2|) (|0| |2|))
+ '((|1| |2|) (|0| |2|)))
+bfinalValueZero
+(bound (relation 2 "finalValueZero") '() '())
+bFence.rw.r
+(bound (relation 2 "fence.rw.r") '() '())
+bFence.tso
+(bound (relation 2 "fence.tso") '() '())
+end
+bTest
+(bounds
+ (universe '(|0| |1| |2| |3| |4| |5|) #<procedure:...t/lang/universe.rkt:15:5>)
+ (list
+  (bound
+   (relation 1 "MemoryEvent")
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|))
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|)))
+  (bound
+   (relation 2 "proc")
+   '((|0| |0|) (|1| |0|) (|2| |0|) (|3| |1|) (|4| |1|) (|5| |1|))
+   '((|0| |0|) (|1| |0|) (|2| |0|) (|3| |1|) (|4| |1|) (|5| |1|)))
+  (bound
+   (relation 2 "loc")
+   '((|0| |0|) (|1| |0|) (|2| |1|) (|3| |1|) (|4| |1|) (|5| |0|))
+   '((|0| |0|) (|1| |0|) (|2| |1|) (|3| |1|) (|4| |1|) (|5| |0|)))
+  (bound
+   (relation 2 "data")
+   '((|0| |0|) (|1| |1|) (|2| |2|) (|3| |0|) (|4| |1|) (|5| |2|))
+   '((|0| |0|) (|1| |1|) (|2| |2|) (|3| |0|) (|4| |1|) (|5| |2|)))
+  (bound
+   (relation 2 "po")
+   '((|0| |2|) (|1| |2|) (|3| |5|) (|4| |5|))
+   '((|0| |2|) (|1| |2|) (|3| |5|) (|4| |5|)))
+  (bound (relation 2 "po-loc") '() '())
+  (bound (relation 2 "addrdeps") '() '())
+  (bound (relation 2 "datadeps") '() '())
+  (bound (relation 2 "ctrldeps") '() '())
+  (bound
+   (relation 2 "finalValue")
+   '((|1| |2|) (|0| |2|))
+   '((|1| |2|) (|0| |2|)))
+  (bound
+   (relation 1 "M")
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|))
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|)))
+  (bound (relation 1 "R") '((|0|) (|3|)) '((|0|) (|3|)))
+  (bound
+   (relation 1 "W")
+   '((|1|) (|2|) (|4|) (|5|))
+   '((|1|) (|2|) (|4|) (|5|)))
+  (bound (relation 2 "fence.rw.rw") '() '())
+  (bound (relation 2 "fence.rw.r") '() '())
+  (bound (relation 2 "fence.rw.w") '() '())
+  (bound (relation 2 "fence.r.rw") '() '())
+  (bound (relation 2 "fence.r.r") '() '())
+  (bound (relation 2 "fence.r.w") '() '())
+  (bound (relation 2 "fence.w.rw") '() '())
+  (bound (relation 2 "fence.w.r") '() '())
+  (bound (relation 2 "fence.w.w") '() '())
+  (bound (relation 2 "fence.tso") '() '())
+  (bound (relation 2 "rmw") '((|0| |1|) (|3| |4|)) '((|0| |1|) (|3| |4|)))
+  (bound
+   (relation 1 "Amo")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound (relation 1 "XLr") '() '())
+  (bound (relation 1 "XSc") '() '())
+  (bound
+   (relation 1 "AQ")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound
+   (relation 1 "RL")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound
+   (relation 1 "Rcsc")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound
+   (relation 1 "AcqRel")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound (relation 1 "Int") '((|0|) (|1|) (|2|)) '((|0|) (|1|) (|2|)))
+  (bound (relation 1 "Zero") '((|0|)) '((|0|)))
+  (bound
+   (relation 2 "finalValueNotZero")
+   '((|1| |2|) (|0| |2|))
+   '((|1| |2|) (|0| |2|)))
+  (bound (relation 2 "finalValueZero") '() '())))
+bnds: 
+(bounds
+ (universe '(|0| |1| |2| |3| |4| |5|) #<procedure:...t/lang/universe.rkt:15:5>)
+ (list
+  (bound
+   (relation 1 "MemoryEvent")
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|))
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|)))
+  (bound
+   (relation 2 "proc")
+   '((|0| |0|) (|1| |0|) (|2| |0|) (|3| |1|) (|4| |1|) (|5| |1|))
+   '((|0| |0|) (|1| |0|) (|2| |0|) (|3| |1|) (|4| |1|) (|5| |1|)))
+  (bound
+   (relation 2 "loc")
+   '((|0| |0|) (|1| |0|) (|2| |1|) (|3| |1|) (|4| |1|) (|5| |0|))
+   '((|0| |0|) (|1| |0|) (|2| |1|) (|3| |1|) (|4| |1|) (|5| |0|)))
+  (bound
+   (relation 2 "data")
+   '((|0| |0|) (|1| |1|) (|2| |2|) (|3| |0|) (|4| |1|) (|5| |2|))
+   '((|0| |0|) (|1| |1|) (|2| |2|) (|3| |0|) (|4| |1|) (|5| |2|)))
+  (bound
+   (relation 2 "po")
+   '((|0| |2|) (|1| |2|) (|3| |5|) (|4| |5|))
+   '((|0| |2|) (|1| |2|) (|3| |5|) (|4| |5|)))
+  (bound (relation 2 "po-loc") '() '())
+  (bound (relation 2 "addrdeps") '() '())
+  (bound (relation 2 "datadeps") '() '())
+  (bound (relation 2 "ctrldeps") '() '())
+  (bound
+   (relation 2 "finalValue")
+   '((|1| |2|) (|0| |2|))
+   '((|1| |2|) (|0| |2|)))
+  (bound
+   (relation 1 "M")
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|))
+   '((|0|) (|1|) (|2|) (|3|) (|4|) (|5|)))
+  (bound (relation 1 "R") '((|0|) (|3|)) '((|0|) (|3|)))
+  (bound
+   (relation 1 "W")
+   '((|1|) (|2|) (|4|) (|5|))
+   '((|1|) (|2|) (|4|) (|5|)))
+  (bound (relation 2 "fence.rw.rw") '() '())
+  (bound (relation 2 "fence.rw.r") '() '())
+  (bound (relation 2 "fence.rw.w") '() '())
+  (bound (relation 2 "fence.r.rw") '() '())
+  (bound (relation 2 "fence.r.r") '() '())
+  (bound (relation 2 "fence.r.w") '() '())
+  (bound (relation 2 "fence.w.rw") '() '())
+  (bound (relation 2 "fence.w.r") '() '())
+  (bound (relation 2 "fence.w.w") '() '())
+  (bound (relation 2 "fence.tso") '() '())
+  (bound (relation 2 "rmw") '((|0| |1|) (|3| |4|)) '((|0| |1|) (|3| |4|)))
+  (bound
+   (relation 1 "Amo")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound (relation 1 "XLr") '() '())
+  (bound (relation 1 "XSc") '() '())
+  (bound
+   (relation 1 "AQ")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound
+   (relation 1 "RL")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound
+   (relation 1 "Rcsc")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound
+   (relation 1 "AcqRel")
+   '((|0|) (|1|) (|3|) (|4|))
+   '((|0|) (|1|) (|3|) (|4|)))
+  (bound (relation 1 "Int") '((|0|) (|1|) (|2|)) '((|0|) (|1|) (|2|)))
+  (bound (relation 1 "Zero") '((|0|)) '((|0|)))
+  (bound
+   (relation 2 "finalValueNotZero")
+   '((|1| |2|) (|0| |2|))
+   '((|1| |2|) (|0| |2|)))
+  (bound (relation 2 "finalValueZero") '() '())))
+reads: 
+'((|0|) (|3|))
+writes:
+'((|1|) (|2|) (|4|) (|5|))
+event->locs:
+(hash
+ '|0|
+ (set '|0|)
+ '|1|
+ (set '|0|)
+ '|2|
+ (set '|1|)
+ '|3|
+ (set '|1|)
+ '|4|
+ (set '|1|)
+ '|5|
+ (set '|0|))
+event->vals:
+(hash
+ '|0|
+ (set '|0|)
+ '|1|
+ (set '|1|)
+ '|2|
+ (set '|2|)
+ '|3|
+ (set '|0|)
+ '|4|
+ (set '|1|)
+ '|5|
+ (set '|2|))
+lv->writes:
+(hash
+ '(|0| . |2|)
+ (set '|5|)
+ '(|1| . |2|)
+ (set '|2|)
+ '(|0| . |1|)
+ (set '|1|)
+ '(|1| . |1|)
+ (set '|4|))
+event_loc_U:
+'((|2| |1|) (|3| |1|) (|0| |0|) (|1| |0|) (|4| |1|) (|5| |0|))
+event_loc_L:
+'((|2| |1|) (|3| |1|) (|0| |0|) (|1| |0|) (|4| |1|) (|5| |0|))
+event_val_U:
+'((|2| |2|) (|3| |0|) (|0| |0|) (|1| |1|) (|4| |1|) (|5| |2|))
+event_val_L:
+'((|2| |2|) (|3| |0|) (|0| |0|) (|1| |1|) (|4| |1|) (|5| |2|))
+read from init L
+'((|0|) (|3|))
+read from init U
+'((|0|) (|3|))
+from read init L
+'((|0| |1|) (|3| |2|) (|3| |4|) (|0| |5|))
+from read init U
+'((|0| |1|) (|3| |2|) (|3| |4|) (|0| |5|))
+from read initi L
+'((|0| |1|) (|3| |4|))
+from read initi U
+'((|0| |1|) (|3| |4|))
+from read inite L
+'((|3| |2|) (|0| |5|))
+from read inite U
+'((|3| |2|) (|0| |5|))
+rfi_U:
+'()
+bExec
+(bounds
+ (universe '(|0| |1| |2| |3| |4| |5|) #<procedure:...t/lang/universe.rkt:15:5>)
+ (list
+  (bound (relation 2 "rf") '() '())
+  (bound (relation 2 "co") '((|4| |2|) (|1| |5|)) '((|1| |5|) (|4| |2|)))
+  (bound (relation 2 "rfi") '() '())
+  (bound (relation 2 "rfe") '() '())
+  (bound (relation 2 "coi") '() '())
+  (bound (relation 2 "coe") '((|4| |2|) (|1| |5|)) '((|1| |5|) (|4| |2|)))
+  (bound
+   (relation 2 "fr")
+   '((|0| |5|) (|3| |4|) (|3| |2|) (|0| |1|))
+   '((|0| |5|) (|3| |4|) (|3| |2|) (|0| |1|)))
+  (bound (relation 2 "fri") '((|3| |4|) (|0| |1|)) '((|3| |4|) (|0| |1|)))
+  (bound (relation 2 "fre") '((|0| |5|) (|3| |2|)) '((|0| |5|) (|3| |2|)))
+  (bound (relation 2 "rsw") '() '())
+  (bound
+   (relation 2 "fr_init")
+   '((|0| |1|) (|3| |2|) (|3| |4|) (|0| |5|))
+   '((|0| |1|) (|3| |2|) (|3| |4|) (|0| |5|)))
+  (bound
+   (relation 2 "event_loc")
+   '((|2| |1|) (|3| |1|) (|0| |0|) (|1| |0|) (|4| |1|) (|5| |0|))
+   '((|2| |1|) (|3| |1|) (|0| |0|) (|1| |0|) (|4| |1|) (|5| |0|)))
+  (bound
+   (relation 2 "event_val")
+   '((|2| |2|) (|3| |0|) (|0| |0|) (|1| |1|) (|4| |1|) (|5| |2|))
+   '((|2| |2|) (|3| |0|) (|0| |0|) (|1| |1|) (|4| |1|) (|5| |2|)))))
+Allow*
+#t
+#t

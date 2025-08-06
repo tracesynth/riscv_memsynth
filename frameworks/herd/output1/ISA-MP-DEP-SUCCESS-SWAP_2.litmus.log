@@ -1,0 +1,10 @@
+string->number: contract violation
+  expected: string?
+  given: 1
+  context...:
+   /home/whq/Desktop/code_list/memsynth/litmus_riscv/herd/compile.rkt:61:0: compile/riscv
+   body of "/home/whq/Desktop/code_list/memsynth/frameworks/herd/test_rvwmo.rkt"
+val
+"0"
+flagval
+"1"

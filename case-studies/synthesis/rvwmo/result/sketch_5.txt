@@ -1,0 +1,4 @@
+start-time 1754285239
+end-time 1754285242
+Task took 3 seconds
+rvwmo search space: 2^10742

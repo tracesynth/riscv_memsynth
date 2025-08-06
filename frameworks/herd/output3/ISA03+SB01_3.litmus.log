@@ -1,0 +1,7 @@
+substring: contract violation
+  expected: exact-nonnegative-integer?
+  given: #f
+  context...:
+   /home/whq/Desktop/code_list/memsynth/litmus_riscv/herd/parse.rkt:16:0: parse-litmus-test
+   /home/whq/Desktop/code_list/memsynth/litmus_riscv/herd/compile.rkt:45:0: litmus-file->test
+   body of "/home/whq/Desktop/code_list/memsynth/frameworks/herd/test_rvwmo.rkt"

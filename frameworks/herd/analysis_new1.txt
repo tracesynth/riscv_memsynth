@@ -1,0 +1,35 @@
+✅ Success Files:
+./output3/Andy22_0.litmus.log
+./output3/ISA14_0.litmus.log
+./output3/Andy22_3.litmus.log
+./output3/ISA14_1.litmus.log
+
+❌ Non-pass Files:
+./output3/ISA14_16.litmus.log
+./output3/ISA14_13.litmus.log
+
+❌ Non-Success Files:
+./output3/ISA03+SB01_1.litmus.log
+./output3/AMO-FENCE_3.litmus.log
+./output3/ISA03+SB01_0.litmus.log
+./output3/AMO-FENCE_1.litmus.log
+./output3/AMO-FENCE_0.litmus.log
+./output3/ISA03+SB01_3.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_5.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_4.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_1.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_7.litmus.log
+./output3/AMO-FENCE_2.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_2.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_3.litmus.log
+./output3/ISA03+SB01_2.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_6.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_7.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_3.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_4.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_2.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_0.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP-SIMPLE_0.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_1.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_5.litmus.log
+./output3/ISA-MP-DEP-SUCCESS-SWAP_6.litmus.log
